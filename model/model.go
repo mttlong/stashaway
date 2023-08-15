@@ -33,3 +33,7 @@ func (cm *CustomerManager) New() *Customer {
 	cm.nextID++
 	return c
 }
+
+func (c *Customer) AddPortfolio(p *Portfolio) {
+	c.Portfolios = append(c.Portfolios, *p)
+}
