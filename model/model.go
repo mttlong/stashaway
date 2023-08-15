@@ -20,3 +20,16 @@ type Customer struct {
 	ID         int
 	Portfolios []Portfolio
 }
+
+type CustomerManager struct {
+	nextID int
+}
+
+// New creates a new customer and auto-increments the ID.
+func (cm *CustomerManager) New() *Customer {
+	c := &Customer{
+		ID: cm.nextID,
+	}
+	cm.nextID++
+	return c
+}
