@@ -5,35 +5,14 @@ type PortfolioType int
 const (
 	HighRisk PortfolioType = iota
 	Retirement
+	USEquities
+	GovernmentBonds
+	RealEstate
 )
 
 // Portfolio represents the financial portfolio of a customer
 type Portfolio struct {
-	Name           PortfolioType
-	OnetimeDeposit float64
-	MonthlyDeposit float64
-	TotalDeposit   float64
-}
-
-// Customer represents a client with an ID and a list of portfolios
-type Customer struct {
-	ID         int
-	Portfolios []Portfolio
-}
-
-type CustomerManager struct {
-	nextID int
-}
-
-// New creates a new customer and auto-increments the ID.
-func (cm *CustomerManager) New() *Customer {
-	c := &Customer{
-		ID: cm.nextID,
-	}
-	cm.nextID++
-	return c
-}
-
-func (c *Customer) AddPortfolio(p *Portfolio) {
-	c.Portfolios = append(c.Portfolios, *p)
+	Name         PortfolioType
+	Allocation   float64
+	TotalDeposit float64
 }
